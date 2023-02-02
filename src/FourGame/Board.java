@@ -72,8 +72,7 @@ public boolean checkVertical(String playerNumber){
 	for(int i=0;i<board.length;i++){
         for(int j=0;j<board[0].length;j++){
             if(board[i][j].equals(playerNumber)){
-            	int c = i+3;
-            	if(c < board[0].length) {
+            	if(i+3 < board[0].length) {
             		if(board[i+1][j].equals(playerNumber) && board[i+2][j].equals(playerNumber)&& board[i+3][j].equals(playerNumber)) {
             			return true;
             		}
@@ -103,7 +102,7 @@ public boolean checkRightDiagonal(String playerNumber){
 	for(int i=0;i<board.length;i++){
         for(int j=0;j<board[0].length;j++){
             if(board[i][j].equals(playerNumber)){
-            	if(i+3 < board.length && j+3 <board.length) {
+            	if(i+3 < board.length && j+3 <board.length) { // if 
             		if(board[i+1][j+1].equals(playerNumber) && board[i+2][j+2].equals(playerNumber)&& board[i+3][j+3].equals(playerNumber)) {
             			return true;
             		}
@@ -118,8 +117,7 @@ public boolean checkLeftDiagonal(String playerNumber){
 	for(int i=0;i<board.length;i++){
         for(int j=0;j<board[0].length;j++){
             if(board[i][j].equals(playerNumber)){
-            	int c = i+3;
-            	if(c < board.length) {
+            	if(i+3 < board.length) {
             		if(board[i+1][j-1].equals(playerNumber) && board[i+2][j-2].equals(playerNumber)&& board[i+3][j-3].equals(playerNumber)) {
             			return true;
             		}
