@@ -5,9 +5,10 @@ public class Board{
 
     String[][] board;
     Scanner scanner = new Scanner(System.in);
+    int row, column;
     
     public void boardSetUp(){
-        int row, column;
+        //int row, column;
         System.out.println("Enter the number of rows: ");
         row = scanner.nextInt(); //Number of rows prompted by user
         scanner.nextLine();

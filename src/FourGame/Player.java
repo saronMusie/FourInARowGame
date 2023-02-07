@@ -15,12 +15,15 @@ class Player{
     public String getPlayerNumber(){
         return playerNumber;
     }
-    public int makeMove(){
-        System.out.println("Choose column");
-        int columnNum = scanner.nextInt();
-        scanner.nextLine();
-        scanner.close();
-        return columnNum;
+    public int makeMove()throws InputMismatchException{
+    	
+    		System.out.println("Choose column");
+            int columnNum = scanner.nextInt();
+            scanner.nextLine();
+            scanner.close();
+            return columnNum;
+    	
+        
     }
     public String toString(){
         return ("Player "+playerNumber+" is "+playerName);

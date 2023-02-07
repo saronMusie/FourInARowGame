@@ -1,4 +1,5 @@
 package FourGame;
+//import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -30,7 +31,54 @@ public class Game {
 		public void printWinner(Player player) {
 			System.out.println("!!!! WINNER !!!!");
 			System.out.println(player.getName());
-		} 
+		}
+		
+		public void playerTurn(Player currentPlayer){
+			try {
+				int cmn = currentPlayer.makeMove();
+				boolean tokenAdded = board.addToken(cmn,currentPlayer.getPlayerNumber());
+				if(tokenAdded) {
+					board.printBoard();
+				}else if(board.columnFull(cmn)) {
+					throw new ColumnFullException("Column is Full.");
+				}else if(cmn > board.column) {
+					throw new InvalidMoveException("You entered a column number that is greater than board");
+				}
+				
+			}catch(InputMismatchException e) {
+				e.getMessage();
+			}catch(ColumnFullException e) {
+				e.getMessage();
+			}catch(InvalidMoveException e) {
+				e.getMessage();
+			}catch(Exception e) {
+				e.getMessage();
+			}
+			
+		}
+		public void play() {
+			boolean noWinner = true;
+			setUpGame();
+			int currentPlayerIndex = 0;
+			while(noWinner) {
+				if(board.boardFull()) {
+					System.out.println("Board is now full. Game Ends");
+					play();
+				}else {
+					Player currentPlayer = players[currentPlayerIndex];
+					System.out.println("It is player "+currentPlayer.getPlayerNumber()+"'s turn."+currentPlayer.getName());
+					playerTurn(currentPlayer);
+					boolean win = board.checkIfPlayerIsWinner(currentPlayer.getPlayerNumber());
+					if(win) {
+						printWinner(currentPlayer);
+						noWinner = false;
+					}else {
+						currentPlayerIndex = currentPlayerIndex++ % players.length;
+					}
+					
+				}
+			}
+		}
 	}
 	
 	
